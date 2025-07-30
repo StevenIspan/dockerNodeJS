@@ -1,0 +1,26 @@
+name: 部署 Express API
+
+on:
+  push:
+    branches:
+      - main  # 或你實際的分支
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 拉下程式碼
+      uses: actions/checkout@v3
+
+    - name: SSH 到遠端主機並重啟服務
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          cd /your/app/folder
+          git pull
+          npm install
+          pm2 restart app || npm run dev
