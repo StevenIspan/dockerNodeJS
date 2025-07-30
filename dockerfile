@@ -17,4 +17,7 @@ COPY . .
 EXPOSE 3000
 
 # 7. 啟動方式：用 nodemon 開發模式啟動
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]
+COPY watch.sh /app/watch.sh
+RUN chmod +x /app/watch.sh
+CMD ["sh", "-c", "./watch.sh"]
