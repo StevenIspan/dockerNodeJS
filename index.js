@@ -22,7 +22,7 @@ db.connect(err => {
 
 // 查詢所有 customers
 app.get('/customers', (req, res) => {
-  db.query('SELECT * FROM customers', (err, results) => {
+  db.query('SELECT top 5 FROM customers', (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.json(results);
   });

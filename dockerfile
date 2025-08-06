@@ -11,15 +11,15 @@ COPY package*.json ./
 RUN npm install
 
 # 5. 把你的所有程式碼複製進容器
-COPY . .
+# COPY . .
 
 # 6. 對外開放 3000 port（讓外部可以連進來）
 EXPOSE 3000
 
-VOLUME [ "/app" ]
+# VOLUME [ "/app" ]
 
 # 7. 啟動方式：用 nodemon 開發模式啟動
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]
 # COPY watch.sh /app/watch.sh
 # RUN chmod +x /app/watch.sh
 # CMD ["sh", "-c", "./watch.sh"]
