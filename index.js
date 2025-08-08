@@ -22,7 +22,7 @@ db.connect(err => {
 
 // 查詢所有 customers
 app.get('/customers', (req, res) => {
-  db.query('SELECT * FROM customers;', (err, results) => {
+  db.query('SELECT * FROM customers LIMIT 1;', (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.json(results);
   });
@@ -31,5 +31,3 @@ app.get('/customers', (req, res) => {
 app.listen(3000, () => {
   console.log('Server running on port 3000');
 });
-
-//0806 1126
